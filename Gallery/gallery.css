@@ -1,0 +1,210 @@
+/* 摄影时间线相册 */
+#gallery-page {
+  width: 100%;
+  padding: 1.2rem 1.5rem 2.5rem;
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
+  box-shadow: var(--card-box-shadow, 0 3px 8px 6px rgba(7, 17, 27, 0.05));
+}
+
+#gallery-page .gallery-intro {
+  margin-bottom: 1.6rem;
+  color: var(--font-color, #4c4948);
+  line-height: 1.7;
+}
+
+#gallery-page .gallery-intro h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.45rem;
+  color: var(--text-highlight-color, #1f2d3d);
+}
+
+#gallery-page .gallery-intro p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.photo-timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0.5rem;
+  list-style: none;
+}
+
+.photo-timeline::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #49b1f5, rgba(73, 177, 245, 0.15));
+}
+
+[data-theme="dark"] .photo-timeline::before {
+  background: linear-gradient(180deg, #49b1f5, rgba(73, 177, 245, 0.08));
+}
+
+.photo-year {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0.4rem 0 1rem 0;
+  padding: 0.28rem 0.9rem;
+  margin-left: 46px;
+  border-radius: 999px;
+  background: #49b1f5;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 12px rgba(73, 177, 245, 0.35);
+}
+
+.photo-entry {
+  position: relative;
+  margin: 0 0 2rem 46px;
+  padding: 1rem 1.1rem 1.15rem;
+  border-radius: 12px;
+  background: var(--card-bg, #fff);
+  border: 1px solid rgba(73, 177, 245, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] .photo-entry {
+  border-color: rgba(73, 177, 245, 0.28);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.photo-entry:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(7, 17, 27, 0.08);
+}
+
+.photo-entry::before {
+  content: "";
+  position: absolute;
+  left: -35px;
+  top: 1.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #49b1f5;
+  box-shadow: 0 0 0 4px rgba(73, 177, 245, 0.18);
+}
+
+[data-theme="dark"] .photo-entry::before {
+  background: #121212;
+}
+
+.photo-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.55rem 0.9rem;
+  margin-bottom: 0.55rem;
+}
+
+.photo-entry-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #49b1f5;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.photo-entry-title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--text-highlight-color, #1f2d3d);
+}
+
+.photo-entry-desc {
+  margin: 0 0 0.9rem;
+  color: var(--font-color, #4c4948);
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.7rem;
+}
+
+.photo-grid a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 1 / 1;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.photo-grid a:hover img {
+  transform: scale(1.06);
+}
+
+.photo-grid .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.75rem;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.photo-grid a:hover .caption {
+  opacity: 1;
+}
+
+.gallery-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--font-color, #4c4948);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  #gallery-page {
+    padding: 1rem;
+  }
+
+  .photo-timeline::before {
+    left: 10px;
+  }
+
+  .photo-year {
+    margin-left: 32px;
+  }
+
+  .photo-entry {
+    margin-left: 32px;
+    padding: 0.85rem;
+  }
+
+  .photo-entry::before {
+    left: -28px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
